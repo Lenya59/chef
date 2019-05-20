@@ -10,7 +10,7 @@ Main task you can find at this repo in a file with the same name.
   
   
   
-  First of all need to install chefDK to your machine. Install ChefDK (https://docs.chef.io/dk_windows.html "Cheff for Windows")
+  First of all need to install chefDK to your machine. Install [ChefDK](https://docs.chef.io/dk_windows.html "Cheff for Windows")
   
   
   we should bootstrap our nodes to hosted chef serve. But you should realize that you can connet to your machine, in my case it looks like:
