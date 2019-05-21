@@ -62,3 +62,8 @@ m_package[httpd] action install
 and the same output for second node :-)
 
 Go on)
+
+When you add your nodes, you can go to your mange chef acount (in my case it is https://manage.chef.io/organizations/okuli/nodes), and manage you nodes right here. It looks something like this:
+
+![mange_chef_nodes](https://user-images.githubusercontent.com/30426958/58090389-cf6d3c00-7bcf-11e9-8e64-53edc302ded0.png)
+
