@@ -6,17 +6,14 @@
 
   Okay let's start. As the chef server we will use hosted chef organization. For building nodes infrastructure I will use virtualbox with the superstructure of the vagrant. You can find Vargantfile in this repo which will describe nodes properties. Although don't forget that every node should bootstrap Chef Client(looking for chef_client_boot.sh)
 
-
   First of all need to install ChefDK to your machine. [Install ChefDK](https://docs.chef.io/dk_windows.html "Cheff for Windows")
 
   You should bootstrap  nodes to hosted chef server. But you should realize that you can connect to your machine via ssh, in my case it looks like:
-      awpinst node:
-
-  ```shell
+   awpinst node:
+```shell
   ssh -i /c/Users/okuli/chef/.vagrant/machines/awpinst/virtualbox/private_key vagrant@10.128.236.122
-  ```
-
-      mysqlinst node:
+```
+   mysqlinst:  
 ```shell
 ssh -i /c/Users/okuli/chef/.vagrant/machines/mysqlinst/virtualbox/private_key vagrant@10.128.236.128
 ```
