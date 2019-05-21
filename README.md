@@ -10,13 +10,12 @@
   First of all need to install ChefDK to your machine. [Install ChefDK](https://docs.chef.io/dk_windows.html "Cheff for Windows")
 
   You should bootstrap  nodes to hosted chef server. But you should realize that you can connect to your machine via ssh, in my case it looks like:
-      awpinst node:
-
-  ```shell
+   awpinst node:
+```shell
   ssh -i /c/Users/okuli/chef/.vagrant/machines/awpinst/virtualbox/private_key vagrant@10.128.236.122
-  ```
+```
+   mysqlinst:  
 
-      mysqlinst node:
 ```shell
 ssh -i /c/Users/okuli/chef/.vagrant/machines/mysqlinst/virtualbox/private_key vagrant@10.128.236.128
 ```
