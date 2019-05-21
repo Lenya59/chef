@@ -1,29 +1,37 @@
 # CHEF
 
-  Hi to all. This repository will tell you about chef as such tasty configuration manager for controling your infrastructure. For a little bit more information looking for a link beside     [CHEF](https://docs.chef.io/chef_overview.html "Cheff Overview")
-  
-Main task you can find at this repo in a file with the same name. 
+  Hi to all. This repository will tell you about chef as such tasty configuration manager for controlling your infrastructure. For a little bit more information looking for a link beside     [CHEF](https://docs.chef.io/chef_overview.html "Chef Overview")
 
-  Okay let's start. As the chef server we will use hosted chef organizaation. For building nodes infrastructure I will use virtualbox with the superstructure of the vagrant. You can find Vargantfile in this repo which will describe nodes properties. Althought don't forget that every node should bootstrap Cheff Client.
-  
-  
-  
-  
-  
-  First of all need to install chefDK to your machine. [Install ChefDK](https://docs.chef.io/dk_windows.html "Cheff for Windows")
-  
-  
-  we should bootstrap our nodes to hosted chef serve. But you should realize that you can connet to your machine, in my case it looks like:
-  
+  Main task you can find at this repo in a file with the same name.
+
+  Okay let's start. As the chef server we will use hosted chef organization. For building nodes infrastructure I will use virtualbox with the superstructure of the vagrant. You can find Vargantfile in this repo which will describe nodes properties. Although don't forget that every node should bootstrap Chef Client(looking for chef_client_boot.sh)
+
+
+  First of all need to install ChefDK to your machine. [Install ChefDK](https://docs.chef.io/dk_windows.html "Cheff for Windows")
+
+  You should bootstrap  nodes to hosted chef server. But you should realize that you can connect to your machine via ssh, in my case it looks like:
+      awpinst node:
+
   ```shell
-  ssh -i /c/Users/okuli/chef/.vagrant/machines/awpinst/virtualbox/private_key -l vagrant -p 2222 localhost
+  ssh -i /c/Users/okuli/chef/.vagrant/machines/awpinst/virtualbox/private_key vagrant@10.128.236.122
   ```
-  
+
+      mysqlinst node:
+```shell
+ssh -i /c/Users/okuli/chef/.vagrant/machines/mysqlinst/virtualbox/private_key vagrant@10.128.236.128
+```
+
 After this you can bootstrap your node by following:
 
+awpinst:
 ```shell
 knife bootstrap 10.128.236.122 --ssh-user vagrant --sudo --identity-file /c/Users/okuli/chef/.vagrant/machines/awpinst/virtualbox/private_key --node-name awpinst --run-list 'recipe[learn_chef_httpd]'
 ```
+mysqlinst:
+```shell
+knife bootstrap 10.128.236.128 --ssh-user vagrant --sudo --identity-file /c/Users/okuli/chef/.vagrant/machines/mysqlinst/virtualbox/private_key --node-name mysqlinst --run-list 'recipe[learn_chef_httpd]'
+```
+
 
 You get smthng like this:
 
@@ -52,3 +60,6 @@ m_package[httpd] action install
 10.128.236.122 Running handlers complete
 10.128.236.122 Chef Client finished, 4/4 resources updated in 12 seconds
 ```
+and the same output for second node :-)
+
+Go on)
