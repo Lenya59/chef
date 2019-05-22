@@ -67,4 +67,4 @@ When you add your nodes, you can go to your mange chef acount (in my case it is 
 
 ![mange_chef_nodes](https://user-images.githubusercontent.com/30426958/58090389-cf6d3c00-7bcf-11e9-8e64-53edc302ded0.png)
 
-Next step is to assign roles to our nodes. [A little bit more info about roles you can find here](https://docs.chef.io/knife_role.html "roles")
+Next step is to assign roles to our nodes. [A little bit more info about roles you can find here](https://docs.chef.io/roles.html "roles")
