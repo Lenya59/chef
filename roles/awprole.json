@@ -1,0 +1,33 @@
+{
+  "name": "webserver",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "apache2": {
+      "listen_ports": [
+        "80",
+        "443"
+      ]
+    }
+  },
+"run_list": [
+    "recipe[apache2]",
+  ],
+  "env_run_lists" : {
+    "production" : [],
+    "dev": [
+      "role[base]",
+      "recipe[apache]",
+      "recipe[apache::copy_dev_configs]",
+    ],
+    "test": [
+      "role[base]",
+      "recipe[apache]"
+    ]
+  },
+  "override_attributes": {
+    "apache2": {
+      "max_children": "50"
+    }
+  }
+}

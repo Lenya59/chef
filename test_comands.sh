@@ -6,20 +6,17 @@ knife ssl check
 vagrant ssh-config
 
 # Test ssh connection to awpinst using key-based authentication
-ssh -i /c/Users/okuli/chef/.vagrant/machines/awpinst/virtualbox/private_key vagrant@10.128.236.122
+ssh -i /c/Users/okuli/chef/.vagrant/machines/awpinst/virtualbox/private_key vagrant@10.128.236.12
 
 # bootstrap node awpinst
-knife bootstrap 10.128.236.122 --ssh-user vagrant --sudo --identity-file /c/Users/okuli/chef/.vagrant/machines/awpinst/virtualbox/private_key --node-name awpinst --run-list 'recipe[learn_chef_httpd]'
+knife bootstrap 10.128.236.12 --ssh-user vagrant --sudo --identity-file /c/Users/okuli/chef/.vagrant/machines/awpinst/virtualbox/private_key --node-name awpinst
 
 
 # Test ssh connection to mysqlinst
-ssh -i /c/Users/okuli/chef/.vagrant/machines/mysqlinst/virtualbox/private_key vagrant@10.128.236.128
+ssh -i /c/Users/okuli/chef/.vagrant/machines/mysqlinst/virtualbox/private_key vagrant@10.128.236.40
 
 # bootstrap node mysqlinst
-knife bootstrap 10.128.236.128 --ssh-user vagrant --sudo --identity-file /c/Users/okuli/chef/.vagrant/machines/mysqlinst/virtualbox/private_key --node-name mysqlinst --run-list 'recipe[learn_chef_httpd]'
-
-
-knife bootstrap localhost --ssh-port 443  --ssh-user vagrant --sudo --identity-file /c/Users/okuli/chef/.vagrant/machines/mysqlinst/virtualbox/private_key --node-name mysqlinst --run-list 'recipe[learn_chef_httpd]'
+knife bootstrap 10.128.236.40 --ssh-user vagrant --sudo --identity-file /c/Users/okuli/chef/.vagrant/machines/mysqlinst/virtualbox/private_key --node-name mysqlinst
 
 
 
