@@ -218,10 +218,12 @@ awpinst:
     recipe[apache]
 ```
 
+To remove the cookbook (optional):
+```shell
 
+knife cookbook delete cookbook_name
 
-
-
+```
 
 
 
