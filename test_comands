@@ -34,3 +34,11 @@ knife node run_list add awpinst apache
 
 #To remove the particular recipe from run_list (optional)
 knife node run_list remove awpinst recipe run_list: recipe[apache]
+
+
+knife ssh 'name:awpinst' 'sudo chef-client' -x root
+
+
+
+knife ssh localhost --ssh-port 2222 'sudo chef-client' --ssh-user vagrant --ssh-identity-file /c/Users/okuli/chef/.vagrant/machines/awpinst/virtualbox/private_key --manual-list
+knife ssh localhost --ssh-port 2222 'sudo chef-client' --ssh-user vagrant --ssh-identity-file IDENTITY_FILE --manual-list
