@@ -226,6 +226,19 @@ knife cookbook delete cookbook_name
 ```
 
 
+## Running Chef client as a daemon    [tip](https://subscription.packtpub.com/book/networking_and_servers/9781785287947/1/ch01lvl1sec25/running-chef-client-as-a-daemon)
+
+While you can run the Chef client on your nodes manually whenever you change something in your Chef repository, it's sometimes preferable to have the Chef client run automatically every so often. Letting the Chef client run automatically makes sure that no box misses out any updates
+
+```shell
+user@server:~$ subl /etc/cron.d/chef_client
+```
+
+```shell
+PATH=/usr/local/bin:/usr/bin:/bin
+# m h dom mon dow user command
+*/15 * * * * root chef-client -l warn | grep -v 'retrying [1234]/5 in'\
+```
 
 
 
@@ -240,21 +253,7 @@ knife cookbook delete cookbook_name
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## Mysql cookbook
 
 
 
