@@ -23,7 +23,7 @@ execute 'firewalld_enable' do
   ignore_failure true
 end
 
-execute 'firewalld_enable' do
+execute 'firewalld_start' do
   command 'sudo systemctl start firewalld'
   ignore_failure true
 end
