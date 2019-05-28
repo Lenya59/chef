@@ -1,0 +1,111 @@
+I, [2019-05-28T14:36:12.538930 #15656]  INFO -- default-ubuntu-1604: -----> Creating <default-ubuntu-1604>...
+I, [2019-05-28T14:36:14.211766 #15656]  INFO -- default-ubuntu-1604: Bringing machine 'default' up with 'virtualbox' provider...
+I, [2019-05-28T14:36:16.012694 #15656]  INFO -- default-ubuntu-1604: ==> default: Box 'bento/ubuntu-16.04' could not be found. Attempting to find and install...
+I, [2019-05-28T14:36:16.012810 #15656]  INFO -- default-ubuntu-1604:     default: Box Provider: virtualbox
+I, [2019-05-28T14:36:16.012889 #15656]  INFO -- default-ubuntu-1604:     default: Box Version: >= 0
+I, [2019-05-28T14:36:19.395197 #15656]  INFO -- default-ubuntu-1604: ==> default: Loading metadata for box 'bento/ubuntu-16.04'
+I, [2019-05-28T14:36:19.395333 #15656]  INFO -- default-ubuntu-1604:     default: URL: https://vagrantcloud.com/bento/ubuntu-16.04
+I, [2019-05-28T14:36:20.512975 #15656]  INFO -- default-ubuntu-1604: ==> default: Adding box 'bento/ubuntu-16.04' (v201812.27.0) for provider: virtualbox
+I, [2019-05-28T14:36:20.513040 #15656]  INFO -- default-ubuntu-1604:     default: Downloading: https://vagrantcloud.com/bento/boxes/ubuntu-16.04/versions/201812.27.0/providers/virtualbox.box
+I, [2019-05-28T14:36:26.567550 #15656]  INFO -- default-ubuntu-1604: [K    default: Download redirected to host: vagrantcloud-files-production.s3.amazonaws.com
+I, [2019-05-28T14:37:26.941338 #15656]  INFO -- default-ubuntu-1604: [K    default: Progress: 3% (Rate: 3065k/s, Estimated time remaining: 0:03:19)[K    default: Progress: 7% (Rate: 4001k/s, Estimated time remaining: 0:02:25)[K    default: Progress: 7% (Rate: 4059k/s, Estimated time remaining: 0:02:18)[K    default: Progress: 10% (Rate: 3054k/s, Estimated time remaining: 0:02:16)[K    default: Progress: 10% (Rate: 1036k/s, Estimated time remaining: 0:02:34)[K    default: Progress: 11% (Rate: 738k/s, Estimated time remaining: 0:02:49)[K    default: Progress: 12% (Rate: 1026k/s, Estimated time remaining: 0:02:58)[K    default: Progress: 14% (Rate: 2162k/s, Estimated time remaining: 0:02:50)[K    default: Progress: 24% (Rate: 8564k/s, Estimated time remaining: 0:01:42)[K    default: Progress: 65% (Rate: 7680k/s, Estimated time remaining: 0:00:29)[K    default: Progress: 70% (Rate: 7891k/s, Estimated time remaining: 0:00:24)[K    default: Progress: 74% (Rate: 7984k/s, Estimated time remaining: 0:00:20)[K    default: Progress: 79% (Rate: 7999k/s, Estimated time remaining: 0:00:16)[K    default: Progress: 82% (Rate: 7363k/s, Estimated time remaining: 0:00:13)[K    default: 
+I, [2019-05-28T14:37:26.941565 #15656]  INFO -- default-ubuntu-1604: An error occurred while downloading the remote file. The error
+I, [2019-05-28T14:37:26.941610 #15656]  INFO -- default-ubuntu-1604: message, if any, is reproduced below. Please fix this error and try
+I, [2019-05-28T14:37:26.941708 #15656]  INFO -- default-ubuntu-1604: again.
+I, [2019-05-28T14:37:26.941907 #15656]  INFO -- default-ubuntu-1604: 
+I, [2019-05-28T14:37:26.941959 #15656]  INFO -- default-ubuntu-1604:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+I, [2019-05-28T14:37:26.942033 #15656]  INFO -- default-ubuntu-1604:                           Dload  Upload   Total   Spent    Left  Speed
+I, [2019-05-28T14:37:26.942095 #15656]  INFO -- default-ubuntu-1604:   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 34.196.237.103...
+I, [2019-05-28T14:37:26.942703 #15656]  INFO -- default-ubuntu-1604: * TCP_NODELAY set
+I, [2019-05-28T14:37:26.942775 #15656]  INFO -- default-ubuntu-1604: * Connected to vagrantcloud.com (34.196.237.103) port 443 (#0)
+I, [2019-05-28T14:37:26.943687 #15656]  INFO -- default-ubuntu-1604:   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* ALPN, offering h2
+I, [2019-05-28T14:37:26.944415 #15656]  INFO -- default-ubuntu-1604: * ALPN, offering http/1.1
+I, [2019-05-28T14:37:26.944587 #15656]  INFO -- default-ubuntu-1604: * Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+I, [2019-05-28T14:37:26.944736 #15656]  INFO -- default-ubuntu-1604: * successfully set certificate verify locations:
+I, [2019-05-28T14:37:26.944796 #15656]  INFO -- default-ubuntu-1604: *   CAfile: C:\HashiCorp\Vagrant\embedded\cacert.pem
+I, [2019-05-28T14:37:26.944843 #15656]  INFO -- default-ubuntu-1604:   CApath: none
+I, [2019-05-28T14:37:26.944942 #15656]  INFO -- default-ubuntu-1604: * TLSv1.2 (OUT), TLS header, Certificate Status (22):
+I, [2019-05-28T14:37:26.945024 #15656]  INFO -- default-ubuntu-1604: } [5 bytes data]
+I, [2019-05-28T14:37:26.945537 #15656]  INFO -- default-ubuntu-1604: * TLSv1.2 (OUT), TLS handshake, Client hello (1):
+I, [2019-05-28T14:37:26.945667 #15656]  INFO -- default-ubuntu-1604: } [512 bytes data]
+I, [2019-05-28T14:37:26.945757 #15656]  INFO -- default-ubuntu-1604: * TLSv1.2 (IN), TLS handshake, Server hello (2):
+I, [2019-05-28T14:37:26.945861 #15656]  INFO -- default-ubuntu-1604: { [102 bytes data]
+I, [2019-05-28T14:37:26.945981 #15656]  INFO -- default-ubuntu-1604: * TLSv1.2 (IN), TLS handshake, Certificate (11):
+I, [2019-05-28T14:37:26.946094 #15656]  INFO -- default-ubuntu-1604: { [2602 bytes data]
+I, [2019-05-28T14:37:26.946204 #15656]  INFO -- default-ubuntu-1604: * TLSv1.2 (IN), TLS handshake, Server key exchange (12):
+I, [2019-05-28T14:37:26.946316 #15656]  INFO -- default-ubuntu-1604: { [333 bytes data]
+I, [2019-05-28T14:37:26.946428 #15656]  INFO -- default-ubuntu-1604: * TLSv1.2 (IN), TLS handshake, Server finished (14):
+I, [2019-05-28T14:37:26.946544 #15656]  INFO -- default-ubuntu-1604: { [4 bytes data]
+I, [2019-05-28T14:37:26.946663 #15656]  INFO -- default-ubuntu-1604: * TLSv1.2 (OUT), TLS handshake, Client key exchange (16):
+I, [2019-05-28T14:37:26.946733 #15656]  INFO -- default-ubuntu-1604: } [70 bytes data]
+I, [2019-05-28T14:37:26.946830 #15656]  INFO -- default-ubuntu-1604: * TLSv1.2 (OUT), TLS change cipher, Client hello (1):
+I, [2019-05-28T14:37:26.946947 #15656]  INFO -- default-ubuntu-1604: } [1 bytes data]
+I, [2019-05-28T14:37:26.947068 #15656]  INFO -- default-ubuntu-1604: * TLSv1.2 (OUT), TLS handshake, Finished (20):
+I, [2019-05-28T14:37:26.947180 #15656]  INFO -- default-ubuntu-1604: } [16 bytes data]
+I, [2019-05-28T14:37:26.947286 #15656]  INFO -- default-ubuntu-1604: * TLSv1.2 (IN), TLS change cipher, Client hello (1):
+I, [2019-05-28T14:37:26.947396 #15656]  INFO -- default-ubuntu-1604: { [1 bytes data]
+I, [2019-05-28T14:37:26.947506 #15656]  INFO -- default-ubuntu-1604: * TLSv1.2 (IN), TLS handshake, Finished (20):
+I, [2019-05-28T14:37:26.947552 #15656]  INFO -- default-ubuntu-1604: { [16 bytes data]
+I, [2019-05-28T14:37:26.947593 #15656]  INFO -- default-ubuntu-1604: * SSL connection using TLSv1.2 / ECDHE-RSA-AES128-GCM-SHA256
+I, [2019-05-28T14:37:26.947632 #15656]  INFO -- default-ubuntu-1604: * ALPN, server accepted to use http/1.1
+I, [2019-05-28T14:37:26.947670 #15656]  INFO -- default-ubuntu-1604: * Server certificate:
+I, [2019-05-28T14:37:26.947707 #15656]  INFO -- default-ubuntu-1604: *  subject: CN=app.vagrantup.com
+I, [2019-05-28T14:37:26.947748 #15656]  INFO -- default-ubuntu-1604: *  start date: Apr 19 23:10:15 2019 GMT
+I, [2019-05-28T14:37:26.947850 #15656]  INFO -- default-ubuntu-1604: *  expire date: Jul 18 23:10:15 2019 GMT
+I, [2019-05-28T14:37:26.947937 #15656]  INFO -- default-ubuntu-1604: *  subjectAltName: host "vagrantcloud.com" matched cert's "vagrantcloud.com"
+I, [2019-05-28T14:37:26.948013 #15656]  INFO -- default-ubuntu-1604: *  issuer: C=US; O=Let's Encrypt; CN=Let's Encrypt Authority X3
+I, [2019-05-28T14:37:26.948142 #15656]  INFO -- default-ubuntu-1604: *  SSL certificate verify ok.
+I, [2019-05-28T14:37:26.948184 #15656]  INFO -- default-ubuntu-1604: } [5 bytes data]
+I, [2019-05-28T14:37:26.948244 #15656]  INFO -- default-ubuntu-1604: > GET /bento/boxes/ubuntu-16.04/versions/201812.27.0/providers/virtualbox.box HTTP/1.1
+I, [2019-05-28T14:37:26.948300 #15656]  INFO -- default-ubuntu-1604: > Host: vagrantcloud.com
+I, [2019-05-28T14:37:26.948355 #15656]  INFO -- default-ubuntu-1604: > User-Agent: Vagrant/2.2.4 (+https://www.vagrantup.com; ruby2.4.4) 
+I, [2019-05-28T14:37:26.948466 #15656]  INFO -- default-ubuntu-1604: > Accept: */*
+I, [2019-05-28T14:37:26.948529 #15656]  INFO -- default-ubuntu-1604: > 
+I, [2019-05-28T14:37:26.948727 #15656]  INFO -- default-ubuntu-1604: { [5 bytes data]
+I, [2019-05-28T14:37:26.948786 #15656]  INFO -- default-ubuntu-1604: < HTTP/1.1 302 Found
+I, [2019-05-28T14:37:26.949000 #15656]  INFO -- default-ubuntu-1604: < Server: Cowboy
+I, [2019-05-28T14:37:26.949122 #15656]  INFO -- default-ubuntu-1604: < Date: Tue, 28 May 2019 11:36:20 GMT
+I, [2019-05-28T14:37:26.949210 #15656]  INFO -- default-ubuntu-1604: < Connection: keep-alive
+I, [2019-05-28T14:37:26.949337 #15656]  INFO -- default-ubuntu-1604: < X-Frame-Options: SAMEORIGIN
+I, [2019-05-28T14:37:26.949414 #15656]  INFO -- default-ubuntu-1604: < X-Xss-Protection: 1; mode=block
+I, [2019-05-28T14:37:26.949512 #15656]  INFO -- default-ubuntu-1604: < X-Content-Type-Options: nosniff
+I, [2019-05-28T14:37:26.949604 #15656]  INFO -- default-ubuntu-1604: < Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+I, [2019-05-28T14:37:26.949730 #15656]  INFO -- default-ubuntu-1604: < Location: https://archivist.vagrantup.com/v1/object/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJib3hlcy9mMmExOThkYi1hNzgxLTQ4OWEtYmUxYi0yZTVmY2E3MDI5ZGEiLCJtb2RlIjoiciIsImV4cGlyZSI6MTU1OTA0NDI4MX0.3Clor5DdkjYzrHV8JHNcwEIVvTjCZkHmCyqRK0uPZMM
+I, [2019-05-28T14:37:26.949824 #15656]  INFO -- default-ubuntu-1604: < Content-Type: text/html; charset=utf-8
+I, [2019-05-28T14:37:26.949914 #15656]  INFO -- default-ubuntu-1604: < Cache-Control: no-cache
+I, [2019-05-28T14:37:26.949998 #15656]  INFO -- default-ubuntu-1604: < X-Request-Id: b191880b-5dd2-4a9d-a11d-25091aa0231a
+I, [2019-05-28T14:37:26.950161 #15656]  INFO -- default-ubuntu-1604: < X-Runtime: 0.132235
+I, [2019-05-28T14:37:26.950391 #15656]  INFO -- default-ubuntu-1604: < Transfer-Encoding: chunked
+I, [2019-05-28T14:37:26.950502 #15656]  INFO -- default-ubuntu-1604: < Via: 1.1 vegur
+I, [2019-05-28T14:37:26.950604 #15656]  INFO -- default-ubuntu-1604: < 
+I, [2019-05-28T14:37:26.950657 #15656]  INFO -- default-ubuntu-1604: { [5 bytes data]
+I, [2019-05-28T14:37:26.950713 #15656]  INFO -- default-ubuntu-1604: * Ignoring the response-body
+I, [2019-05-28T14:37:26.950812 #15656]  INFO -- default-ubuntu-1604: { [307 bytes data]
+I, [2019-05-28T14:37:26.950882 #15656]  INFO -- default-ubuntu-1604: 100   300    0   300    0     0    408      0 --:--:-- --:--:-- --:--:--   408
+I, [2019-05-28T14:37:26.950939 #15656]  INFO -- default-ubuntu-1604: * Connection #0 to host vagrantcloud.com left intact
+I, [2019-05-28T14:37:26.951007 #15656]  INFO -- default-ubuntu-1604: * Issue another request to this URL: 'https://archivist.vagrantup.com/v1/object/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJib3hlcy9mMmExOThkYi1hNzgxLTQ4OWEtYmUxYi0yZTVmY2E3MDI5ZGEiLCJtb2RlIjoiciIsImV4cGlyZSI6MTU1OTA0NDI4MX0.3Clor5DdkjYzrHV8JHNcwEIVvTjCZkHmCyqRK0uPZMM'
+I, [2019-05-28T14:37:26.951072 #15656]  INFO -- default-ubuntu-1604: *   Trying 54.165.51.142...
+I, [2019-05-28T14:37:26.951126 #15656]  INFO -- default-ubuntu-1604: * TCP_NODELAY set
+I, [2019-05-28T14:37:26.951206 #15656]  INFO -- default-ubuntu-1604: * Connected to archivist.vagrantup.com (54.165.51.142) port 443 (#1)
+I, [2019-05-28T14:37:26.951330 #15656]  INFO -- default-ubuntu-1604: * ALPN, offering h2
+I, [2019-05-28T14:37:26.951440 #15656]  INFO -- default-ubuntu-1604: * ALPN, offering http/1.1
+I, [2019-05-28T14:37:26.951555 #15656]  INFO -- default-ubuntu-1604: * Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+I, [2019-05-28T14:37:26.951673 #15656]  INFO -- default-ubuntu-1604: * successfully set certificate verify locations:
+I, [2019-05-28T14:37:26.951790 #15656]  INFO -- default-ubuntu-1604: *   CAfile: C:\HashiCorp\Vagrant\embedded\cacert.pem
+I, [2019-05-28T14:37:26.951921 #15656]  INFO -- default-ubuntu-1604:   CApath: none
+I, [2019-05-28T14:37:26.952040 #15656]  INFO -- default-ubuntu-1604: * TLSv1.2 (OUT), TLS header, Certificate Status (22):
+I, [2019-05-28T14:37:26.952159 #15656]  INFO -- default-ubuntu-1604: } [5 bytes data]
+I, [2019-05-28T14:37:26.952265 #15656]  INFO -- default-ubuntu-1604: * TLSv1.2 (OUT), TLS handshake, Client hello (1):
+I, [2019-05-28T14:37:26.952374 #15656]  INFO -- default-ubuntu-1604: } [512 bytes data]
+I, [2019-05-28T14:37:26.954000 #15656]  INFO -- default-ubuntu-1604:   0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0* TLSv1.2 (IN), TLS handshake, Server hello (2):
+I, [2019-05-28T14:37:26.955375 #15656]  INFO -- default-ubuntu-1604: { [102 bytes data]
+I, [2019-05-28T14:37:26.955577 #15656]  INFO -- default-ubuntu-1604: * TLSv1.2 (IN), TLS handshake, Certificate (11):
+I, [2019-05-28T14:37:26.955737 #15656]  INFO -- default-ubuntu-1604: { [2574 bytes data]
+I, [2019-05-28T14:37:26.955787 #15656]  INFO -- default-ubuntu-1604: * TLSv1.2 (IN), TLS handshake, Server key exchange (12):
+I, [2019-05-28T14:37:26.955840 #15656]  INFO -- default-ubuntu-1604: { [333 bytes data]
+I, [2019-05-28T14:37:26.955962 #15656]  INFO -- default-ubuntu-1604: * TLSv1.2 (IN), TLS handshake, Server finished (14):
+I, [2019-05-28T14:37:26.956079 #15656]  INFO -- default-ubuntu-1604: { [4 bytes data]
+I, [2019-05-28T14:37:26.956122 #15656]  INFO -- default-ubuntu-1604: * TLSv1.2 (OUT), TLS handshake, Client key exchange (16):
+I, [2019-05-28T14:37:26.956213 #15656]  INFO -- default-ubuntu-1604: } [70 bytes data]
+I, [2019-05-28T14:37:26.956357 #15656]  INFO -- default-ubuntu-1604: * TLSv1.2 (OUT), TLS change cipher, Client hello (1):
+I, [2019-05-28T14:37:26.956452 #15656]  INFO -- default-ubuntu-1604: } [1 bytes data]
