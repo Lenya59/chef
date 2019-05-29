@@ -6,9 +6,9 @@ knife ssl check
 vagrant ssh-config
 
 # Test ssh connection to awpinst using key-based authentication
-ssh -i /c/Users/okuli/chef/.vagrant/machines/awpinst/virtualbox/private_key vagrant@10.128.236.150
+ssh -i /c/Users/okuli/chef/.vagrant/machines/awpinst/virtualbox/private_key vagrant@10.128.236.48
 # bootstrap node awpinst
-knife bootstrap 10.128.236.150 --ssh-user vagrant --sudo --identity-file /c/Users/okuli/chef/.vagrant/machines/awpinst/virtualbox/private_key --node-name awpinst
+knife bootstrap 10.128.236.48 --ssh-user vagrant --sudo --identity-file /c/Users/okuli/chef/.vagrant/machines/awpinst/virtualbox/private_key --node-name awpinst
 
 
 # Test ssh connection to mysqlinst
@@ -24,7 +24,7 @@ knife ssh localhost --ssh-port 2222 'sudo chef-client' --ssh-user vagrant --ssh-
 
 #You can add a cookbook to the run_list of a particular node using the following command.
 #Replace awpinst with your client node name.
-knife node run_list add awpinst apache
+knife node run_list add awpinst lamp
 
 
 

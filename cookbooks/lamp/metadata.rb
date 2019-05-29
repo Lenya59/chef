@@ -1,6 +1,6 @@
 name 'lamp'
-maintainer 'The Authors'
-maintainer_email 'you@example.com'
+maintainer 'Oleksii Kulish'
+maintainer_email 'kuliahljosha@gmail.com'
 license 'All Rights Reserved'
 description 'Installs/Configures lamp'
 long_description 'Installs/Configures lamp'

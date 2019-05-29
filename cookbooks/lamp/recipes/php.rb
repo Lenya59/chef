@@ -4,29 +4,27 @@
 #
 # Copyright:: 2019, The Authors, All Rights Reserved.
 
-# install php.
+# install php packeges
 package "php" do
     action :install
 end
 
-package "php-common" do
+package %w(php-common php-gd)  do
   action :install
 end
 
-package "php-gd" do
+package %w(php-xml php-mbstring)  do
   action :install
 end
 
-package "php-mbstring" do
+package %w(php-devel php-pecl-memcache)  do
   action :install
 end
 
-package "php-mcrypt" do
+package %w(php-mysql php-pspell)  do
   action :install
 end
 
-#Install php-mysql.
-package 'php-mysql' do
-    action :install
-    notifies :restart, "service[httpd]"
+package %w(php-snmp php-xmlrpc)  do
+  action :install
 end
