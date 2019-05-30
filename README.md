@@ -78,31 +78,22 @@ Small lyrical digression, Chef uses Ruby as its reference language to define the
 ROLES!!!
 
 
-Let's create cookbook for apache. From  workstation, move to our cookbooks directory
+
+
+
+
+
+
+
+OK, so log to your Chef workstation and go to your cookbooks directory. Create the wordpress cookbook.
 
 Create the cookbook:
 
 ```shell
-$ chef generate cookbook apache
-Generating cookbook apache
-- Ensuring correct cookbook file content
-- Ensuring delivery configuration
-- Ensuring correct delivery build cookbook content
-
-Your cookbook is ready. Type `cd apache` to enter it.
-
-There are several commands you can run to get started locally developing and testing your cookbook.
-Type `delivery local --help` to see a full list.
-
-Why not start by writing a test? Tests for the default recipe are stored at:
-
-test/integration/default/default_test.rb
-
-If you'd prefer to dive right in, the default recipe can be found at:
-
-recipes/default.rb
+chef generate cookbook wordpress
 ```
-When you go to your cookbook directory(apache in our case) adn type ll, you can see smthng like this:\
+
+When you go to your cookbook directory(wordpress in my case) and type ll, you can see smthng like this:
 
 ```shell
 -rw-r--r-- 1 okuli 1049089   77 May 22 16:55 Berksfile
@@ -115,71 +106,34 @@ drwxr-xr-x 1 okuli 1049089    0 May 22 17:01 recipes/
 drwxr-xr-x 1 okuli 1049089    0 May 22 16:55 spec/
 drwxr-xr-x 1 okuli 1049089    0 May 22 16:55 test/
 ```
+
+Our next step is to create the default attributes. These are the values that we can change and modify the behavior of the installed packages or change the usernames, passwords, directory locations etc.
+
+```shell
+cd wordpress
+chef generate attribute default
+```
+
+[ATTRIBUTES](https://docs.chef.io/attributes.html)
+
+
+Now, let’s move to the recipes. In order to install WordPress, we’ll have to install Apache web-server, install PHP and its modules so WordPress as a PHP program can run, then install MySQL database server and finally download WordPress and extract it under the Apache root directory that we specified in the default attributes. We’ll create a recipe for each of these steps.
+
+## Apache recipe
 Recipe:
 A recipe consists of a series of resources which defines the state of a particular service or an application, for example, one resource could say “the NTP service should be running”, another may say “the telnet service should be stopped”
 
-Go to the recipes directory. There you can see a file called “default.rb“. We are going to use this file to add resources for that are required for getting the Apache server running.
+Create the recipe first. This will create a file apache.rb under the recipes directory.
 
 ```shell
-cat default.rb
-#
-# Cookbook:: apache
-# Recipe:: default
-#
-# Copyright:: 2019, The Authors, All Rights Reserved.
+chef generate recipe apache
 ```
-Install Apache:
+To can find this recipe in this repository and investigate it))
 
-To begin, let’s add a resource for installing apache package.
 
-```ruby
-package 'httpd' do
-  action :install
-end
-```
 
-package – Defines package resource
 
-httpd –  Name of the package you want to install, should be a legitimate package name.
 
-action :install –  This specifies the action for the resource “package“, in our case, installation of httpd.
-
-Where,
-
-service – Defines service resource.
-
-httpd –  The name of the service, should be a legitimate service name.
-
-action [ :enable, :start ] – Specify actions that you want to perform. In our case, this resource will start “httpd” and enable it on start up.
-
-Index File:
-
-Our next resource is for placing the index.html file on the document root of Apache server. All you need to specify the location where want the file and from where to get the file.
-
-Where,
-
-cookbook_file – Resource to transfer files from a sub-directory of httpd/files to a mentioned path located on a chef node.
-
-source – Specify the name of the source file. Files are normally found in COOK_BOOKS/files.
-
-mode – Sets the permissions for the file.
-
-Creating the Index File:
-
-Since we have defined a “cookbook_file” resource, we need to create a source file “index.html” inside files subdirectory of your cookbook.
-```shell
-cd ~/chef-repo/cookbooks
-```
-Create a subdirectory “files” under your cookbook:
-```shell
-mkdir apache/files
-```
-
-Add a simple text into the index.html.
-
-```shell
-echo "Installed and Setup Using Chef" > httpd/files/index.html
-```
 
 
 
@@ -219,9 +173,7 @@ awpinst:
 
 To remove the cookbook (optional):
 ```shell
-
 knife cookbook delete cookbook_name
-
 ```
 
 
@@ -238,106 +190,3 @@ PATH=/usr/local/bin:/usr/bin:/bin
 # m h dom mon dow user command
 */15 * * * * root chef-client -l warn | grep -v 'retrying [1234]/5 in'\
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Mysql cookbook
-
-
-
-The Chef Supermarket has an OpsCode-maintained [MySQL cookbook](https://supermarket.chef.io/cookbooks/mysql)
-
-From the workstation, download and install the cookbook:
-
-```shell
-knife cookbook site install mysql
-```
-This will also install any and all dependencies required to use the cookbook. These dependencies include the smf and yum-mysql-community cookbooks, which in turn depend on the rbac and yum cookbooks.
-
-
-```shell
-knife cookbook site install mysql
-WARN: knife cookbook site install has been deprecated in favor of knife supermarket install. In Chef 16 (April 2020) this will result in an error!
-Installing mysql to C:/Users/okuli/chef/cookbooks
-Checking out the master branch.
-Creating pristine copy branch chef-vendor-mysql
-WARN: knife cookbook site download has been deprecated in favor of knife supermarket download. In Chef 16 (April 2020) this will result in an error!
-Downloading mysql from Supermarket at version 8.5.1 to C:/Users/okuli/chef/cookbooks/mysql.tar.gz
-Cookbook saved: C:/Users/okuli/chef/cookbooks/mysql.tar.gz
-Removing pre-existing version.
-Uncompressing mysql version 8.5.1.
-Removing downloaded tarball
-1 files updated, committing changes
-Creating tag cookbook-site-imported-mysql-8.5.1
-Checking out the master branch.
-Updating 33c26af..efb0772
-Fast-forward
- cookbooks/mysql/.foodcritic                        |   1 +
- cookbooks/mysql/CHANGELOG.md                       | 692 +++++++++++++++++++++
- cookbooks/mysql/CONTRIBUTING.md                    |   2 +
- cookbooks/mysql/README.md                          | 424 +++++++++++++
- cookbooks/mysql/libraries/helpers.rb               | 291 +++++++++
- cookbooks/mysql/libraries/matchers.rb              |  71 +++
- cookbooks/mysql/libraries/mysql_base.rb            |  30 +
- .../libraries/mysql_client_installation_package.rb |  31 +
- cookbooks/mysql/libraries/mysql_config.rb          |  56 ++
- .../libraries/mysql_server_installation_package.rb |  42 ++
- cookbooks/mysql/libraries/mysql_service.rb         | 105 ++++
- cookbooks/mysql/libraries/mysql_service_base.rb    | 203 ++++++
- .../libraries/mysql_service_manager_systemd.rb     | 142 +++++
- .../libraries/mysql_service_manager_sysvinit.rb    |  79 +++
- .../libraries/mysql_service_manager_upstart.rb     | 103 +++
- cookbooks/mysql/metadata.json                      |   1 +
- .../default/apparmor/usr.sbin.mysqld-instance.erb  |  14 +
- .../default/apparmor/usr.sbin.mysqld-local.erb     |   1 +
- .../templates/default/apparmor/usr.sbin.mysqld.erb |  47 ++
- cookbooks/mysql/templates/default/my.cnf.erb       |  57 ++
- .../templates/default/smf/svc.method.mysqld.erb    |  28 +
- .../default/systemd/mysqld-wait-ready.erb          |  30 +
- .../templates/default/systemd/mysqld.service.erb   |  16 +
- .../mysql/templates/default/sysvinit/mysqld.erb    | 279 +++++++++
- .../mysql/templates/default/tmpfiles.d.conf.erb    |   1 +
- .../default/upstart/mysqld-wait-ready.erb          |  22 +
- .../mysql/templates/default/upstart/mysqld.erb     |  26 +
- 27 files changed, 2794 insertions(+)
- create mode 100644 cookbooks/mysql/.foodcritic
- create mode 100644 cookbooks/mysql/CHANGELOG.md
- create mode 100644 cookbooks/mysql/CONTRIBUTING.md
- create mode 100644 cookbooks/mysql/README.md
- create mode 100644 cookbooks/mysql/libraries/helpers.rb
- create mode 100644 cookbooks/mysql/libraries/matchers.rb
- create mode 100644 cookbooks/mysql/libraries/mysql_base.rb
- create mode 100644 cookbooks/mysql/libraries/mysql_client_installation_package.rb
- create mode 100644 cookbooks/mysql/libraries/mysql_config.rb
- create mode 100644 cookbooks/mysql/libraries/mysql_server_installation_package.rb
- create mode 100644 cookbooks/mysql/libraries/mysql_service.rb
- create mode 100644 cookbooks/mysql/libraries/mysql_service_base.rb
- create mode 100644 cookbooks/mysql/libraries/mysql_service_manager_systemd.rb
- create mode 100644 cookbooks/mysql/libraries/mysql_service_manager_sysvinit.rb
- create mode 100644 cookbooks/mysql/libraries/mysql_service_manager_upstart.rb
- create mode 100644 cookbooks/mysql/metadata.json
- create mode 100644 cookbooks/mysql/templates/default/apparmor/usr.sbin.mysqld-instance.erb
- create mode 100644 cookbooks/mysql/templates/default/apparmor/usr.sbin.mysqld-local.erb
- create mode 100644 cookbooks/mysql/templates/default/apparmor/usr.sbin.mysqld.erb
- create mode 100644 cookbooks/mysql/templates/default/my.cnf.erb
- create mode 100644 cookbooks/mysql/templates/default/smf/svc.method.mysqld.erb
- create mode 100644 cookbooks/mysql/templates/default/systemd/mysqld-wait-ready.erb
- create mode 100644 cookbooks/mysql/templates/default/systemd/mysqld.service.erb
- create mode 100644 cookbooks/mysql/templates/default/sysvinit/mysqld.erb
- create mode 100644 cookbooks/mysql/templates/default/tmpfiles.d.conf.erb
- create mode 100644 cookbooks/mysql/templates/default/upstart/mysqld-wait-ready.erb
- create mode 100644 cookbooks/mysql/templates/default/upstart/mysqld.erb
-Cookbook mysql version 8.5.1 successfully installed
-```
-
