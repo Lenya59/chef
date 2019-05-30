@@ -131,50 +131,60 @@ chef generate recipe apache
 To can find this recipe in this repository and investigate it))
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-Once your cookbook is complete, you can upload them on to your Chef server.
-
+Let's create default config file for the Apache web server and that the template for that is a file called httpd.conf.erb
+So, let’s create that template. This command will create a directory called templates and a file httpd.conf.erb
 ```shell
-knife cookbook upload httpd
-Uploading apache         [0.1.0]
-Uploaded 1 cookbook.
+chef generate template httpd.conf
 ```
-Check whether you can list the cookbook that you just have been uploaded.
+lokking for this file in this repo))
+
+## PHP
+Same as with the Apache recipe, we’ll have to generate a recipe for PHP and it’s modules.
 
 ```shell
-knife cookbook list
-
-apache   0.1.0
-````
-
-You can add a cookbook to the run_list of a particular node using the following command.
-
-```shell
-knife node run_list add awpinst apache
-
-awpinst:
-  run_list:
-    role[web]
-    recipe[apache::apache]
-    recipe[apache]
+chef generate recipe php
 ```
+Edit the newly created file php.rb and use next configuration
 
-To remove the cookbook (optional):
-```shell
-knife cookbook delete cookbook_name
+```ruby
+# SPECIFY 5.6 PHP VERSION
+execute 'specify_php_version' do
+  command 'yum -y install http://rpms.remirepo.net/enterprise/remi-release-7.rpm'
+  ignore_failure true
+end
+
+execute 'specify_php_version' do
+  command 'yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm'
+  ignore_failure true
+end
+
+execute 'specify_php_version' do
+  command 'yum install yum-utils'
+  ignore_failure true
+end
+
+execute 'specify_php_version' do
+  command 'yum-config-manager --enable remi-php56 '
+  ignore_failure true
+end
+
+
+%w{php php-fpm php-mysql php-xmlrpc php-gd php-pear php-pspell}.each do |pkg|
+  package pkg do
+    action :install
+    notifies :reload, 'service[httpd]', :immediately
+  end
+end
 ```
+![image](https://user-images.githubusercontent.com/30426958/58631014-d855c000-82e9-11e9-985b-d6119baf318d.png)
+ATTTENTION: The newest version of wordpress ( by 29.05.2019 ) require at least 5.6.20 version of PHP. Therefore, you has 2 ways!:
+* Set up Wordpress 5.1.x version, which support php5.4
+* Set up php5.6 by adding remi repository and installing php from there.
+
+I am choose second way, therefore you can find some bash commands in php.rb with names 'specify_php_version'
+
+
+
 
 
 ## Running Chef client as a daemon    [tip](https://subscription.packtpub.com/book/networking_and_servers/9781785287947/1/ch01lvl1sec25/running-chef-client-as-a-daemon)
