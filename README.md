@@ -177,6 +177,7 @@ end
 end
 ```
 ![image](https://user-images.githubusercontent.com/30426958/58631014-d855c000-82e9-11e9-985b-d6119baf318d.png)
+
 ATTTENTION: The newest version of wordpress ( by 29.05.2019 ) require at least 5.6.20 version of PHP. Therefore, you has 2 ways!:
 * Set up Wordpress 5.1.x version, which support php5.4
 * Set up php5.6 by adding remi repository and installing php from there.
