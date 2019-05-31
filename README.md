@@ -116,6 +116,19 @@ chef generate attribute default
 
 [ATTRIBUTES](https://docs.chef.io/attributes.html)
 
+## Running Chef client as a daemon    [tip](https://subscription.packtpub.com/book/networking_and_servers/9781785287947/1/ch01lvl1sec25/running-chef-client-as-a-daemon)
+
+While you can run the Chef client on your nodes manually whenever you change something in your Chef repository, it's sometimes preferable to have the Chef client run automatically every so often. Letting the Chef client run automatically makes sure that no box misses out any updates
+
+```shell
+user@server:~$ subl /etc/cron.d/chef_client
+```
+
+```shell
+PATH=/usr/local/bin:/usr/bin:/bin
+# m h dom mon dow user command
+*/15 * * * * root chef-client -l warn | grep -v 'retrying [1234]/5 in'\
+```
 
 Now, let’s move to the recipes. In order to install WordPress, we’ll have to install Apache web-server, install PHP and its modules so WordPress as a PHP program can run, then install MySQL database server and finally download WordPress and extract it under the Apache root directory that we specified in the default attributes. We’ll create a recipe for each of these steps.
 
@@ -184,20 +197,104 @@ ATTTENTION: The newest version of wordpress ( by 29.05.2019 ) require at least 5
 
 I am choose second way, therefore you can find some bash commands in php.rb with names 'specify_php_version'
 
-
-
-
-
-## Running Chef client as a daemon    [tip](https://subscription.packtpub.com/book/networking_and_servers/9781785287947/1/ch01lvl1sec25/running-chef-client-as-a-daemon)
-
-While you can run the Chef client on your nodes manually whenever you change something in your Chef repository, it's sometimes preferable to have the Chef client run automatically every so often. Letting the Chef client run automatically makes sure that no box misses out any updates
-
+## MySQL
+Same here, let’s generate a recipe for the installation of MySQL
 ```shell
-user@server:~$ subl /etc/cron.d/chef_client
+chef generate recipe mysql
 ```
 
-```shell
-PATH=/usr/local/bin:/usr/bin:/bin
-# m h dom mon dow user command
-*/15 * * * * root chef-client -l warn | grep -v 'retrying [1234]/5 in'\
+```ruby
+# Install MySQL client and server<strong>
+%w{mariadb mariadb-server}.each do |pkg|
+  package pkg do
+    action :install
+  end
+end
+ 
+# Enable start on boot and start the MySQL server
+service 'mariadb' do
+  action [:enable, :start]
+end
+ 
+# Location of the initial MySQL script
+template '/tmp/mysql.sql' do
+  source "mysql.conf.erb"
+end
+ 
+# Execute the initial setup of MySQL
+execute 'mysql_server' do
+  command '/usr/bin/mysql -sfu root < /tmp/mysql.sql && ls /tmp/mysql.sql'
+  ignore_failure true
+end
 ```
+# Download WordPress
+We have to create a recipe to download and extract WordPress.
+
+```shell
+chef generate recipe download
+```
+
+
+```ruby
+ruby_block "download_wordpress" do
+  block do
+    require 'fileutils'
+    FileUtils.cd node['wordpress']['document_root']
+    system 'curl -o latest.tar.gz https://wordpress.org/latest.tar.gz'
+    system 'tar xzvf latest.tar.gz --strip-components=1 && rm latest.tar.gz'
+    system 'chown -R apache:apache *'
+  end
+  not_if { ::File.exist?(File.join(node['wordpress']['document_root'], 'wp-settings.php')) }
+  action :create
+end
+```
+
+## Wrap up
+Now that we have all recipes in place, we can tell Chef in what order to execute them. Edit the default recipe (default.rb file under recipes) and add these lines.
+
+```ruby
+include_recipe 'wordpress::apache'
+include_recipe 'wordpress::php'
+include_recipe 'wordpress::mysql'
+include_recipe 'wordpress::download'
+```
+The best practice is to create a role for each cookbook, so let’s create one.
+```shell
+knife role create wordpress
+```
+
+```json
+{
+  "name": "wordpress",
+  "description": "Role to install WordPress (apache, php, mysql)",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+ 
+  },
+  "override_attributes": {
+ 
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[wordpress::apache]",
+    "recipe[wordpress::php]",
+    "recipe[wordpress::mysql]",
+    "recipe[wordpress::download]"
+  ],
+  "env_run_lists": {
+ 
+  }
+}
+```
+Upload the cookbook to the server and execute it against a node.
+```shell
+knife cookbook upload wordpress
+knife bootstrap awpinst --ssh-user vagrant --sudo -N awpinst -r 'role[wordpress]'
+```
+
+Congrats! When it done you can watch wordpress starting page:
+
+![wordpress-start page](https://user-images.githubusercontent.com/30426958/58710523-2986b200-83c5-11e9-9faf-83a83b00d89b.png)
+
+
+
